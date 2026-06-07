@@ -1,4 +1,4 @@
-# 🎓 Teaching Content Generator
+# 🎓 EduGenAI
 
 > **AI-Powered Educational Content Creation from YouTube Videos, Web Articles, and Documents**
 
