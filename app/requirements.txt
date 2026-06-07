@@ -1,0 +1,47 @@
+Flask>=3.0.0
+python-dotenv>=1.0.0
+requests
+translators
+
+# YouTube transcripts + splitting
+youtube-transcript-api
+langdetect 
+pytube
+tiktoken
+langchain-text-splitters
+langchain-core
+deep-translator
+
+# Embeddings (local, free)
+sentence-transformers
+numpy
+
+# (Generator later) Gemini via LangChain
+langchain-google-genai
+google-genai
+
+# Vector DB later (optional, keep for pipeline)
+pinecone
+
+flask-cors>=4.0.0
+gunicorn>=21.2.0
+
+# Web scraping for articles
+langchain-community
+beautifulsoup4
+lxml
+
+# --- PPT generation ---
+python-pptx
+Pillow
+defusedxml
+typing-extensions
+
+# Optional (recommended) for File Upload extraction flow:
+# Docling provides unified machine-text and OCR extraction locally.
+docling
+
+# Fallback libraries used by the file extractor if docling is not available:
+PyPDF2
+python-docx
+pytesseract
