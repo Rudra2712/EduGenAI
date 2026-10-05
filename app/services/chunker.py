@@ -12,19 +12,29 @@ import app.config as cfg
 # Use a tokenizer compatible with your embedding/LLM models.
 # (o200k_base works well with GPT-4o/Emb-3; fallback to cl100k_base if unavailable)
 def _get_encoding():
-    for name in (cfg.__dict__.get("TOKENIZER") or "", "o200k_base", "cl100k_base"):
+    for name in (cfg.__dict__.get("TOKENIZER") or "", "o200k_base", "cl100k_base", "p50k_base"):
         try:
             return tiktoken.get_encoding(name)
         except Exception:
             continue
-    # absolute fallback
-    return tiktoken.get_encoding("cl100k_base")
+    return None
 
-_encoding = _get_encoding()
+_encoding = None
+try:
+    _encoding = _get_encoding()
+except Exception:
+    _encoding = None
 
 def count_tokens(text: str) -> int:
-    """Count tokens using the chosen tiktoken encoding."""
-    return len(_encoding.encode(text))
+    """Count tokens using the chosen tiktoken encoding, or character-length fallback."""
+    if _encoding is not None:
+        try:
+            return len(_encoding.encode(text))
+        except Exception:
+            pass
+    # Fallback approximation: roughly 4 characters per token
+    return max(1, len(text) // 4)
+
 
 # --- Normalization -----------------------------------------------------------
 

@@ -34,3 +34,6 @@ def home():
 @app.route("/health", methods=["GET"])
 def health():
     return {"status": "healthy", "message": "Backend is running"}, 200
+
+if __name__ == "__main__":
+    app.run(host="127.0.0.1", port=5000, debug=True)

@@ -19,6 +19,7 @@ numpy
 # (Generator later) Gemini via LangChain
 langchain-google-genai
 google-genai
+google-generativeai
 
 # Vector DB later (optional, keep for pipeline)
 pinecone
